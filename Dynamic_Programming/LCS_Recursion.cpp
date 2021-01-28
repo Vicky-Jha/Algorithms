@@ -17,3 +17,4 @@ int main()
     cout<<LCS(str1 , str2 , 0 ,0)<<endl;
     return 0;
 }
+// Worst Case Complexity is m.O(2^n) or n.O(2^m)
