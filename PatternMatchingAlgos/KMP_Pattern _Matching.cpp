@@ -51,7 +51,7 @@ int main()
     string S,T;
     cout<<"Enter Text"<<endl;
     getline(cin , T);
-    cout<<"Enter Pattern"<<endl;
+    cout<<"Enter Pattern to be searched in text"<<endl;
     getline(cin , S);
     
     int F[S.size()];
@@ -60,9 +60,9 @@ int main()
     return 0;
 }
 
-
-
-
+//Input 
+// txt : ababeabcabababdababd
+// pat : ababd
 
 
 
