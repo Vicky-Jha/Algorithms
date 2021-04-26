@@ -1,41 +1,69 @@
-//quicksort
-#include<stdio.h>
-int number[25];
-void quicksort(int first,int last){
-    int i, j, pivot, temp;
-    if(first<last){
-        pivot=first;
-        i=first;
-        j=last;
-        while(i<j){
-            while(number[i]<=number[pivot])
+#include <stdio.h>
+#include <bits/stdc++.h>
+using namespace std;
+
+void printArray(int arr[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+class Solution
+{
+    public:
+    
+    void quickSort(int arr[], int low, int high)
+    {
+        if (low < high)
+        {
+            int pi = partition(arr, low, high);
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+    
+    public:
+    int partition (int arr[], int low, int high) // this function will return pivot position whose left and right side elements are smaller and greater then pivot element respectively
+    {
+        int pivot = arr[high];
+        int i = (low - 1);
+        for (int j = low; j <= high- 1; j++)
+        {
+            if (arr[j] <= pivot)
+            {
                 i++;
-            while(number[j]>number[pivot])
-                j--;
-            if(i<j){
-                temp=number[i];
-                number[i]=number[j];
-                number[j]=temp;
+                swap(arr[i], arr[j]);
             }
         }
-        temp=number[pivot];
-        number[pivot]=number[j];
-        number[j]=temp;
-        quicksort(first,j-1);
-        quicksort(j+1,last);
+        swap(arr[i + 1], arr[high]);
+        //returning the partitioning index.
+        return (i + 1);
     }
-}
-int main(){
-    int i, count;
-    printf("Enter size (Max. - 25): \n");
-    scanf("%d",&count);
-    printf("Enter %d elements:\n",count);
-    for(i=0;i<count;i++)
-        scanf("%d",&number[i]);
-    quicksort(0,count-1);
-    printf("The Sorted Order is:\n");
-    for(i=0;i<count;i++)
-        printf(" %d",number[i]);
-    printf("\n");
+};
+
+int main()
+{
+    int arr[1000],n,i;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+      scanf("%d",&arr[i]);
+    Solution ob;
+    ob.quickSort(arr, 0, n-1);
+    printArray(arr, n);
     return 0;
 }
+
+
+// example 
+// 4 1 3 9 2 7
+
+// running 
+Pivot position = 4 and Pivot element 7
+4 1 3 2 7 9 
+Pivot position = 1 and Pivot element 2
+1 2 3 4 
+Pivot position = 3 and Pivot element 4
+3 4 
+res -> 1 2 3 4 7 9 
