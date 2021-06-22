@@ -64,6 +64,8 @@ int main()
 // txt : ababeabcabababdababd
 // pat : ababd
 
+// abcdabeabf pattern
+// 0 0 0 0 1 2 0 1 2 0  prefix table
 
 
 
