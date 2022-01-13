@@ -20,7 +20,7 @@ int main()
         }
     }
     
-    map<int, int> mp;
+    multimap<int, int> mp;
     mp.insert({0,0});
     while(!mp.empty()){
         pair<int, int> p = *mp.begin();
