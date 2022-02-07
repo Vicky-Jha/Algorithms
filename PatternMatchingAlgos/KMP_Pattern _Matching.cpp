@@ -60,8 +60,8 @@ int main()
     return 0;
 }
 
-//Input 
-// txt : ababeabcabababdababd
+//Input best example use case
+// txt : abababd
 // pat : ababd
 
 // abcdabeabf pattern
