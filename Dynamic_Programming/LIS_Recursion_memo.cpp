@@ -25,6 +25,37 @@ public:
 // Space complexity: O(N)
 class Solution {
 public:
+    int helper(vector<int>& nums, int idx, vector<int>& memo) {
+        if(memo[idx] != -1) {
+            return memo[idx];
+        }
+
+        int maxLen = 1;
+        for(int i = idx; i < nums.size() - 1; ++i) {
+            if(nums[idx] < nums[i + 1]) {
+                maxLen = max(maxLen, 1 + helper(nums, i + 1, memo));
+            }
+        }
+
+        return memo[idx] = maxLen;
+    }
+
+    int lengthOfLIS(vector<int>& nums) {
+        int maxLen = 1;
+        vector<int> memo(nums.size(), -1);
+        for(int i = 0; i < nums.size(); ++i) {
+            maxLen = max(maxLen, helper(nums, i, memo));
+        }
+
+        return maxLen;
+    }
+};
+
+// Top down approach (recursive + memo)
+// Time complexity: O(N*N)
+// Space complexity: O(N)
+class Solution {
+public:
     vector<int> memo;  // Used for memoization
 
     int helper(vector<int>& nums, int idx) {
