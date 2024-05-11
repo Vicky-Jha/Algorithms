@@ -1,5 +1,5 @@
 // Recursive DFS solution
-// Time complexity O(n.(n pow n))
+// Time complexity seems like O(n.(n pow n)) but it is O(2 pow n)
 class Solution {
 public:
     int maxLen = 1;
